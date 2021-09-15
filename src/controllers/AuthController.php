@@ -24,4 +24,9 @@ class AuthController
     {
 
     }
+
+    public function logout(Request $request, Response $response): void
+    {
+
+    }
 }

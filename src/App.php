@@ -31,7 +31,8 @@ class App
         $this->router->post('/actions/article/update', [ArticleController::class, 'update']);
 
         $this->router->post('/actions/auth/login', [AuthController::class, 'login']);
-        $this->router->post('/actions/auth/register', []);
+        $this->router->post('/actions/auth/register', [AuthController::class, 'register']);
+        $this->router->post('/actions/auth/logout', [AuthController::class, 'logout']);
 
         $this->router->run();
     }
