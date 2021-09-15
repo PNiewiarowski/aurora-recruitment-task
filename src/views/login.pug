@@ -9,3 +9,7 @@ block extra_css
 block content
     .container
         h2.subheading Login page
+        form.article(method='POST', action='/actions/article/add')
+            input.text(type='text', name='login', placeholder='login...')
+            input.text(type='password', name='password', placeholder='password...')
+            button.button login
