@@ -1,4 +1,4 @@
-extends layouts/main.pug
+extends layouts/full.pug
 
 block title
     title Register page
@@ -7,5 +7,11 @@ block extra_css
     link(rel='stylesheet', href='/assets/css/register.css')
 
 block content
-    .container
+    .container.container--full
         h2.subheading Register page
+        form.article(method='POST', action='#')
+            input.text(type='text', name='login', placeholder='login...')
+            input.text(type='password', name='password', placeholder='password...')
+            button.button register
+            p.small--text you already have account? click
+                a.link(href='/login')=' ' . 'here'
