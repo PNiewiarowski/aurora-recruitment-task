@@ -1,0 +1,29 @@
+extends layouts/main.pug
+
+block title
+    title='Editing article #' . $article->id
+
+block extra_css
+    link(rel='stylesheet', href='/assets/css/edit.css')
+
+block content
+    .container
+        h1.subheading='article: #' . $article->id
+        .edit
+            form.article(method='POST', action='/actions/article/update')
+                input.hide(value=$article->id name='id')
+                input.article__input.text(type='text', name='title', placeholder='Article title...' value=$article->title)
+                textarea.article__area.text(name='description' placeholder='Article description...')=$article->description
+                input.article__input.text(type='text', name='tags', placeholder='Article tags...' value=$article->tags)
+                .flex
+                    select.article__select.select(name='status')
+                        option.select__option()
+                        option.select__option(value='finished', selected=$article->status == 'finished') finished
+                        option.select__option(value='not finished', selected=$article->status == 'not finished') not finished
+                        option.select__option(value='to delete', selected=$article->status == 'to delete') to delete
+                        option.select__option(value='hidden', selected=$article->status == 'hide') hide
+                if isset($error)
+                    p.danger all inputs should be filled!
+                .article__add
+                    button.edit__button.button save
+                    a.edit__button.button(href='/board') cancel

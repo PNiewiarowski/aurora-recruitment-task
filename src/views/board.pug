@@ -1,0 +1,54 @@
+extends layouts/main.pug
+
+block title
+    title Board
+
+block extra_css
+    link(rel='stylesheet', href='/assets/css/board.css')
+
+block content
+    .container
+        .section
+            if isset($tag)
+                h2.subheading='results for ' . $tag
+            else
+                .section
+                    include layouts/search.pug
+                .section
+                    h2.subheading add article
+                    form.article(method='POST', action='/actions/article/add')
+                        input.article__input.text(type='text', name='title', placeholder='article title...')
+                        textarea.article__area.text(name='description' placeholder='article description...')
+                        input.article__input.text(type='text', name='tags', placeholder='article tags...')
+                        select.article__select.select(name='status')
+                            option(value='')
+                            option(value='finished') finished
+                            option(value='not finished') not finished
+                            option(value='to delete') to delete
+                            option(value='hidden') hidden
+                        if isset($error)
+                            p.danger all inputs should be filled!
+                        .article__add
+                            button.button add
+        .section
+            h2.subheading='board'
+            for $i = sizeof($articles) - 1; $i >= 0; --$i
+                .article
+                    h2.article__subtitle=$articles[$i]->title
+                    p.article__status article status is
+                        span.important=' ' . $articles[$i]->status
+                    p.article__description=$articles[$i]->description
+                    .article__tag
+                        each $tag in explode(' ', $articles[$i]->tags)
+                            a.tag(href='/board?tag=' . $tag)='#' . $tag
+                    .article__ui
+                        .article__edit
+                            a(href='/board/' . $articles[$i]->id)
+                                button.button edit
+                        form.article__delete(method='POST', action='/actions/article/delete')
+                            input.hide(name='id' value=$articles[$i]->id)
+                            button.button delete
+        if sizeof($articles) === 0
+            h2.board__message='there are not articles :C'
+        if isset($tag)
+            a.board__button.button(href='/board/') back to board

@@ -1,0 +1,18 @@
+.hide {
+    display: none;
+}
+
+.important {
+    font-weight: 700;
+    color: var(--primary-dark-color);
+}
+
+.danger {
+    color: var(--primary-danger-color);
+    font-weight: 700;
+    font-size: 1.33rem;
+}
+
+.section {
+    margin: 3rem 0;
+}

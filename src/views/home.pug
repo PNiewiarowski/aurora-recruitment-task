@@ -1,0 +1,18 @@
+extends layouts/main.pug
+
+block title
+    title Home page
+
+block extra_css
+    link(rel='stylesheet', href='/assets/css/home.css')
+
+block content
+    .container
+        .home
+            h1.subheading aurora creation
+            p.description aurora creation recruitment task
+            div.tag__container.home__tags
+                a.tag(href='/board?tag=php') #php
+                a.tag(href='/board?tag=css') #css
+                a.tag(href='/board?tag=pug') #pug
+            a.home__button.button(href='/board') check dashboard

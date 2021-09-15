@@ -1,0 +1,12 @@
+.subheading {
+    font-size: 3.33rem;
+    font-weight: 700;
+    color: var(--primary-dark-color);
+}
+
+.description {
+    font-size: 1.66rem;
+    font-weight: 400;
+    color: var(--primary-dark-color-light-contrast);
+    margin: 6px 0;
+}

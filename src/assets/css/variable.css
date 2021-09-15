@@ -1,0 +1,9 @@
+:root {
+    --primary-dark-color: #15152f;
+    --primary-dark-color-light-contrast: #00001f;
+    --primary-dark-color-light-contrast-hover: #44445f;
+    --primary-white-color: #eeeeff;
+    --primary-white-color-light-contrast: #ffffff;
+    --primary-danger-color: #c71515;
+    --shadow-color: #00001faa;
+}

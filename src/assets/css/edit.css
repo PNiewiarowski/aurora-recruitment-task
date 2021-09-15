@@ -1,0 +1,12 @@
+.edit {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.edit__button {
+    margin-left: 4px;
+}
+
+.edit__button:nth-child(1) {
+    margin-left: 0;
+}

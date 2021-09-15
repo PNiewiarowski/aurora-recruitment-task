@@ -1,0 +1,35 @@
+.button {
+    padding: 0.66rem;
+    font-size: 1.33rem;
+    background-color: transparent;
+    color: var(--primary-dark-color);
+    border: solid 4px var(--primary-dark-color);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+}
+
+.button:hover {
+    background-color: var(--primary-dark-color);
+    color: var(--primary-white-color);
+}
+
+.text,
+.select {
+    padding: 0.66rem;
+    font-size: 1.33rem;
+    border-bottom: solid 4px var(--primary-dark-color);
+    background: var(--primary-white-color-light-contrast);
+    color: var(--primary-dark-color-light-contrast);
+    width: 100%;
+}
+
+.input__text,
+.input__select {
+    width: 70%;
+    padding-top: calc(0.66rem + 4px);
+}
+
+.input__label {
+    width: 30%;
+}

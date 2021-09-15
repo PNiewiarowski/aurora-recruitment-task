@@ -1,0 +1,18 @@
+extends layouts/main.pug
+
+block title
+    title='Error :C'
+
+block extra_css
+    link(rel='stylesheet', href='/assets/css/error.css')
+
+block content
+    .container
+        .error
+            h1.subheading=$title
+            p.description=$message
+            div.tag__container.error__tags
+                a.tag(href='/board?tag=php') #error
+                a.tag(href='/board?tag=css') #sadge
+                a.tag(href='/board?tag=pug') #monkaS
+            a.error__button.button(href='/board') go back

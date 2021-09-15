@@ -1,0 +1,14 @@
+.tag {
+    margin-left: 6px;
+    padding: 6px;
+    font-size: 1.33rem;
+    font-weight: 700;
+    color: var(--primary-white-color);
+    background-color: var(--primary-dark-color);
+    box-shadow: 0 0 2px 1px var(--shadow-color);
+    cursor: pointer;
+}
+
+.tag:nth-child(1) {
+    margin: 0;
+}

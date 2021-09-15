@@ -1,0 +1,8 @@
+{
+  "require": {
+    "izniburak/router": "^2.0",
+    "pug-php/pug": "^3.4",
+    "ext-pdo": "*",
+    "vlucas/phpdotenv": "^5.3"
+  }
+}

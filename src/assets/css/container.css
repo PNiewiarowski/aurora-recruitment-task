@@ -1,0 +1,18 @@
+.container {
+    text-align: center;
+    margin: 1rem 1rem;
+}
+
+
+@media screen and (min-width: 720px) {
+    .container {
+        width: 66%;
+        margin: 1rem auto;
+    }
+}
+
+@media screen and (min-width: 1080px) {
+    .container {
+        width: 33%;
+    }
+}
