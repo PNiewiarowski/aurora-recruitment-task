@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Middlewares;
+namespace Middlewares;
 
 use Buki\Router\Http\Middleware;
 

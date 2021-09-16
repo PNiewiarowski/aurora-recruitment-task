@@ -2,10 +2,10 @@
 
 namespace App;
 
-use App\Controllers\ArticleController;
-use App\Controllers\PageController;
-use App\Controllers\AuthController;
-use App\Middlewares\AuthMiddleware;
+use Controllers\ArticleController;
+use Controllers\PageController;
+use Controllers\AuthController;
+use Middlewares\AuthMiddleware;
 use Buki\Router\Router;
 
 class App

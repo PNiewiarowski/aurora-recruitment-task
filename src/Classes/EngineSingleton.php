@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Utils;
+namespace Classes;
 
 use Exception;
 use Pug;
@@ -26,7 +26,7 @@ class EngineSingleton
     {
         $this->pugEngine = new Pug([
             'cache' => 'weirdos/cache/pug',
-            'basedir' => 'views',
+            'basedir' => 'Views',
             'upToDateCheck' => false,
             'expressionLanguage' => 'php',
         ]);

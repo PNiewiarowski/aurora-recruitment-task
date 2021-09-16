@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace Controllers;
 
-use App\Utils\DBSingleton;
+use Classes\DBSingleton;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

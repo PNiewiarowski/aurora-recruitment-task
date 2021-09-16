@@ -6,7 +6,7 @@ Aurora recruitment task for PHP junior developer.
 
 - clone repository `git clone [repository]`
 - cd to source directory `cd [repository]/src`
-- install dependencies `php composer.json install`
+- install dependencies `composer install`
 - run local development server `php -S localhost:[port]`
 - create database `aurora` in MySQL
 - recreate database from `/database/dump.sql`

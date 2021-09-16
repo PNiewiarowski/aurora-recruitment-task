@@ -1,10 +1,9 @@
 <?php
 
 require 'vendor/autoload.php';
-require 'models/Article.php';
-require 'classes/DBSingleton.php';
-require 'classes/EngineSingleton.php';
-require 'middlewares/AuthMiddleware.php';
+spl_autoload_register(function ($className) {
+    require $className . '.php';
+});
 require 'App.php';
 
 use App\App;
@@ -16,12 +15,12 @@ $dotenv->load();
 
 $router = new Router([
     'paths' => [
-        'controllers' => 'controllers',
-        'middlewares' => 'middlewares',
+        'controllers' => 'Controllers',
+        'middlewares' => 'Middlewares',
     ],
     'namespaces' => [
-        'controllers' => 'App\Controllers',
-        'middlewares' => 'App\Middlewares',
+        'controllers' => 'Controllers',
+        'middlewares' => 'Middlewares',
     ],
 ]);
 

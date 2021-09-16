@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Controllers;
+namespace Controllers;
 
-use App\Models\Article;
-use App\Utils\DBSingleton;
-use App\Utils\EngineSingleton;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Models\Article;
+use Classes\DBSingleton;
+use Classes\EngineSingleton;
 
 class PageController
 {
@@ -37,12 +37,12 @@ class PageController
         return $this->render($request, $response, 'home.pug');
     }
 
-    public function login(Request  $request, Response $response): Response
+    public function login(Request $request, Response $response): Response
     {
         return $this->render($request, $response, 'login.pug');
     }
 
-    public function register(Request  $request, Response $response): Response
+    public function register(Request $request, Response $response): Response
     {
         return $this->render($request, $response, 'register.pug');
     }
