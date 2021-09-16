@@ -35,7 +35,7 @@ class App
         $this->router->group('/actions/auth', function () {
             $this->router->post('login', [AuthController::class, 'login']);
             $this->router->post('register', [AuthController::class, 'register']);
-            $this->router->post('/logout', [AuthController::class, 'logout']);
+            $this->router->post('logout', [AuthController::class, 'logout']);
         });
 
         $this->router->run();
