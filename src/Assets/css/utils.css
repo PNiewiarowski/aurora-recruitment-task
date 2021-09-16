@@ -16,3 +16,11 @@
 .section {
     margin: 3rem 0;
 }
+
+.transparent {
+    background-color: transparent;
+}
+
+.hover-able {
+    cursor: pointer;
+}

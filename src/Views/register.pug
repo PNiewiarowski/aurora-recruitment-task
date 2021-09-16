@@ -9,7 +9,7 @@ block extra_css
 block content
     .container.container--full
         h2.subheading Register page
-        form.article(method='POST', action='#')
+        form.article(method='POST', action='/actions/auth/register')
             input.text(type='text', name='username', placeholder='username...')
             input.text(type='password', name='password', placeholder='password...')
             button.button register

@@ -7,5 +7,6 @@ nav.navbar
             a.navbar__link(href='/board')
                 img(src='/assets/images/board.png')
         li.navbar__item
-            a.navbar__link(href='/about')
-                img(src='/assets/images/about.png')
+            form(method='POST', action='/actions/auth/logout')
+                button.hover-able.transparent.navbar__link
+                    img(src='/assets/images/logout.png')

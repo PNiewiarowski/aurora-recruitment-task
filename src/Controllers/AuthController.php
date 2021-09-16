@@ -20,33 +20,33 @@ class AuthController
     {
         $user = User::readByUsername($this->db->pdoObj, $request->get('username'));
 
-        if ($user->id != null) {
-            header('Location /login?error=user-exists');
+        if ($user->id === null) {
+            header('Location: /login?error=user-not-exists');
             die();
         }
 
-        if (!password_verify($user->hashedPassword, $request->get('password'))) {
-            header('Location /login?error=wrong-password');
+        if (!password_verify($request->get('password'), $user->hashedPassword)) {
+            header('Location: /login?error=wrong-password');
             die();
         }
 
         $_SESSION['logged'] = true;
         $_SESSION['username'] = $user->username;
-        header('Location /');
+        header('Location: /');
         die();
     }
 
     public function register(Request $request, Response $response): void
     {
         if (!User::validUser($request)) {
-            header('Location /register?error=bad-request');
+            header('Location: /register?error=bad-request');
             die();
         }
 
         if (
             (User::readByUsername($this->db->pdoObj, $request->get('username')))->id !== null
         ) {
-            header('Location /register?error=users-exists');
+            header('Location: /register?error=users-exists');
             die();
         }
 
@@ -57,14 +57,15 @@ class AuthController
             $hashedPassword,
         ))->create($this->db->pdoObj);
 
-        header('Location /login?success=user-create');
+        header('Location: /login?success=user-create');
         die();
     }
 
     public function logout(Request $request, Response $response): void
     {
         session_destroy();
-        header('Location /login?success=user-create');
+        $_SESSION = array();
+        header('Location: /login');
         die();
     }
 }
