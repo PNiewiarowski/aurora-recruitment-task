@@ -26,13 +26,17 @@ class App
         $this->router->get('/login', [PageController::class, 'login']);
         $this->router->get('/register', [PageController::class, 'register']);
 
-        $this->router->post('/actions/article/delete', [ArticleController::class, 'delete']);
-        $this->router->post('/actions/article/add', [ArticleController::class, 'create']);
-        $this->router->post('/actions/article/update', [ArticleController::class, 'update']);
+        $this->router->group('/actions/article', function () {
+            $this->router->post('delete', [ArticleController::class, 'delete'], ['before' => AuthMiddleware::class]);
+            $this->router->post('add', [ArticleController::class, 'create'], ['before' => AuthMiddleware::class]);
+            $this->router->post('update', [ArticleController::class, 'update'], ['before' => AuthMiddleware::class]);
+        });
 
-        $this->router->post('/actions/auth/login', [AuthController::class, 'login']);
-        $this->router->post('/actions/auth/register', [AuthController::class, 'register']);
-        $this->router->post('/actions/auth/logout', [AuthController::class, 'logout']);
+        $this->router->group('/actions/auth', function () {
+            $this->router->post('login', [AuthController::class, 'login']);
+            $this->router->post('register', [AuthController::class, 'register']);
+            $this->router->post('ogout', [AuthController::class, 'logout']);
+        });
 
         $this->router->run();
     }
