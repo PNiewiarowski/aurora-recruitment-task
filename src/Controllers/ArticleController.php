@@ -16,15 +16,6 @@ class ArticleController
         $this->db = DBSingleton::getInstance();
     }
 
-    private static function validRequestArticle(Request $request): bool
-    {
-        return
-            empty($request->get('title')) ||
-            empty($request->get('description')) ||
-            empty($request->get('tags')) ||
-            empty($request->get('status'));
-    }
-
     public function delete(Request $request, Response $response): void
     {
         $id = $request->get('id');
@@ -36,7 +27,7 @@ class ArticleController
 
     public function create(Request $request, Response $response): void
     {
-        if ($this->validRequestArticle($request)) {
+        if (!Article::validArticle($request)) {
             header('Location: /board?error=true');
             die();
         }
@@ -55,7 +46,7 @@ class ArticleController
 
     public function update(Request $request, Response $response): void
     {
-        if ($this->validRequestArticle($request)) {
+        if (Article::validArticle($request)) {
             header('Location: /board/' . $request->get('id') . '?error=true');
             die();
         }

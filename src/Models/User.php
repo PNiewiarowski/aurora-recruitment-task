@@ -2,6 +2,8 @@
 
 namespace Models;
 
+use Symfony\Component\HttpFoundation\Request;
+
 class User
 {
     public ?int $id = null;
@@ -15,6 +17,13 @@ class User
         $this->hashedPassword = $hashedPassword;
     }
 
+    public static function validUser(Request $request): bool
+    {
+        return
+            strlen($request->get('username')) > 4 &&
+            strlen($request->get('password')) > 6;
+    }
+
     private static function createUser(mixed $row): User
     {
         return new User(
@@ -24,7 +33,7 @@ class User
         );
     }
 
-    public function readById($pdo_obj, $id)
+    public static function readById($pdo_obj, $id)
     {
         $stmt = $pdo_obj->prepare(
             'SELECT * FROM users WHERE ID = ?'

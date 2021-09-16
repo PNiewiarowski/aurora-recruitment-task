@@ -3,6 +3,7 @@
 namespace Models;
 
 use PDO;
+use Symfony\Component\HttpFoundation\Request;
 
 class Article
 {
@@ -21,6 +22,15 @@ class Article
         $this->description = $description;
         $this->status = $status;
         $this->tags = $tags;
+    }
+
+    public static function validArticle(Request $request): bool
+    {
+        return
+            !empty($request->get('title')) &&
+            !empty($request->get('description')) &&
+            !empty($request->get('tags')) &&
+            !empty($request->get('status'));
     }
 
     private static function createArticle(mixed $row): Article
