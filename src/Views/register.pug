@@ -13,5 +13,7 @@ block content
             input.text(type='text', name='username', placeholder='username...')
             input.text(type='password', name='password', placeholder='password...')
             button.button register
+            if isset($error)
+                p.danger=$error
             p.small--text you already have account? click
                 a.link(href='/login')=' ' . 'here'

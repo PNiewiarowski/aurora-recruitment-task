@@ -13,6 +13,12 @@
     font-size: 1.33rem;
 }
 
+.success {
+    color: var(--primary-success-color);
+    font-weight: 700;
+    font-size: 1.33rem;
+}
+
 .section {
     margin: 3rem 0;
 }

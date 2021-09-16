@@ -39,12 +39,29 @@ class PageController
 
     public function login(Request $request, Response $response): Response
     {
-        return $this->render($request, $response, 'login.pug');
+        if (isset($_GET['error'])) {
+            $error = $_GET['error'];
+        }
+
+        if (isset($_GET['success'])) {
+            $success = $_GET['success'];
+        }
+
+        return $this->render($request, $response, 'login.pug', [
+            'error' => $error ?? null,
+            'success' => $success ?? null,
+        ]);
     }
 
     public function register(Request $request, Response $response): Response
     {
-        return $this->render($request, $response, 'register.pug');
+        if (isset($_GET['error'])) {
+            $error = $_GET['error'];
+        }
+
+        return $this->render($request, $response, 'register.pug', [
+            'error' => $error ?? null,
+        ]);
     }
 
     public function board(Request $request, Response $response): Response

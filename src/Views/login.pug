@@ -13,5 +13,9 @@ block content
             input.text(type='text', name='username', placeholder='username...')
             input.text(type='password', name='password', placeholder='password...')
             button.button login
+            if isset($error)
+                p.danger=$error
+            if isset($success)
+                p.success=$success
             p.small--text you don't have account? click
                  a.link(href='/register')=' ' . 'here'
