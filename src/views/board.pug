@@ -49,6 +49,6 @@ block content
                             input.hide(name='id' value=$articles[$i]->id)
                             button.button delete
         if sizeof($articles) === 0
-            h2.board__message='there are not articles :C'
+            h2.board__message='there are no articles :C'
         if isset($tag)
             a.board__button.button(href='/board/') back to board
