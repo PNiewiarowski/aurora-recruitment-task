@@ -33,12 +33,23 @@ class User
         );
     }
 
-    public static function readById($pdo_obj, $id)
+    public static function readById($pdoObj, $id): User
     {
-        $stmt = $pdo_obj->prepare(
+        $stmt = $pdoObj->prepare(
             'SELECT * FROM users WHERE ID = ?'
         );
         $stmt->execute([$id]);
+        $row = $stmt->fetch();
+
+        return User::createUser($row);
+    }
+
+    public static function readByUsername($pdoObj, $username): User
+    {
+        $stmt = $pdoObj->prepare(
+            'SELECT * FROM users WHERE USERNAME = ?'
+        );
+        $stmt->execute([$username]);
         $row = $stmt->fetch();
 
         return User::createUser($row);
