@@ -20,8 +20,8 @@ class User
     public static function validUser(Request $request): bool
     {
         return
-            strlen($request->get('username')) > 4 &&
-            strlen($request->get('password')) > 6;
+            strlen($request->get('username')) > 3 &&
+            strlen($request->get('password')) > 3;
     }
 
     private static function createUser(mixed $row): User
