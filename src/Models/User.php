@@ -21,7 +21,9 @@ class User
     {
         return
             strlen($request->get('username')) > 3 &&
-            strlen($request->get('password')) > 3;
+            strlen($request->get('username')) <= 25 &&
+            strlen($request->get('password')) > 3 &&
+            strlen($request->get('password')) <= 255;
     }
 
     private static function createUser(mixed $row): User
