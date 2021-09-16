@@ -30,7 +30,7 @@ CREATE TABLE `articles` (
                             `TAGS` varchar(50) DEFAULT NULL,
                             PRIMARY KEY (`ID`),
                             UNIQUE KEY `table_name_ID_uindex` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,8 +39,34 @@ CREATE TABLE `articles` (
 
 LOCK TABLES `articles` WRITE;
 /*!40000 ALTER TABLE `articles` DISABLE KEYS */;
-INSERT INTO `articles` VALUES (1,'Test title 1','Test description 1','to delete','test test1'),(2,'Test title 2','Test description 2','finished','test test2');
+INSERT INTO `articles` VALUES (1,'Test title 1','Test description 1','to delete','test test1'),(2,'Test title 2','Test description 2','to delete','test test2');
 /*!40000 ALTER TABLE `articles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+                         `ID` int NOT NULL AUTO_INCREMENT,
+                         `USERNAME` varchar(35) NOT NULL,
+                         `HASHED_PASSWORD` varchar(255) NOT NULL,
+                         PRIMARY KEY (`ID`),
+                         UNIQUE KEY `users_NICKNAME_uindex` (`USERNAME`),
+                         UNIQUE KEY `users_ID_uindex` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +78,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-15 18:22:10
+-- Dump completed on 2021-09-16 23:31:03
