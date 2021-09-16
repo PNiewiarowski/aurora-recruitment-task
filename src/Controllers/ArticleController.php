@@ -46,7 +46,7 @@ class ArticleController
 
     public function update(Request $request, Response $response): void
     {
-        if (Article::validArticle($request)) {
+        if (!Article::validArticle($request)) {
             header('Location: /board/' . $request->get('id') . '?error=true');
             die();
         }
