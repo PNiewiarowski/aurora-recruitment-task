@@ -63,6 +63,8 @@ class AuthController
 
     public function logout(Request $request, Response $response): void
     {
-
+        session_destroy();
+        header('Location /login?success=user-create');
+        die();
     }
 }
