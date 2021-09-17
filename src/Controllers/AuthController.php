@@ -21,12 +21,12 @@ class AuthController
         $user = User::readByUsername($this->db->pdoObj, $request->get('username'));
 
         if ($user->id === null) {
-            header('Location: /login?error=user%20not%20exists');
+            header('Location: /login?error=' . urlencode('user not exists'));
             die();
         }
 
         if (!password_verify($request->get('password'), $user->hashedPassword)) {
-            header('Location: /login?error=wrong%20password');
+            header('Location: /login?error=' . urlencode('wrong password'));
             die();
         }
 
@@ -39,14 +39,14 @@ class AuthController
     public function register(Request $request, Response $response): void
     {
         if (!User::validUser($request)) {
-            header('Location: /register?error=bad%20request');
+            header('Location: /register?error=' . urlencode('bad request'));
             die();
         }
 
         if (
             (User::readByUsername($this->db->pdoObj, $request->get('username')))->id !== null
         ) {
-            header('Location: /register?error=user%20with%20that%20username%20exists');
+            header('Location: /register?error=' . urlencode('user with that username exists'));
             die();
         }
 
@@ -57,7 +57,7 @@ class AuthController
             $hashedPassword,
         ))->create($this->db->pdoObj);
 
-        header('Location: /login?success=user%20create');
+        header('Location: /login?success=' . urlencode('user created'));
         die();
     }
 
