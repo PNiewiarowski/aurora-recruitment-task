@@ -43,6 +43,11 @@ class AuthController
             die();
         }
 
+        if ($request->get('password') !== $request->get('password-repeated')) {
+            header('Location: /register?error=' . urlencode('passwords inputs are not the same'));
+            die();
+        }
+
         if (
             (User::readByUsername($this->db->pdoObj, $request->get('username')))->id !== null
         ) {

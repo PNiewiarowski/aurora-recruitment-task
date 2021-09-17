@@ -12,6 +12,7 @@ block content
         form.article(method='POST', action='/actions/auth/register')
             input.text(type='text', name='username', placeholder='username...')
             input.text(type='password', name='password', placeholder='password...')
+            input.text(type='password', name='password-repeated', placeholder='repeat password...')
             button.button register
             if isset($error)
                 p.danger=$error
