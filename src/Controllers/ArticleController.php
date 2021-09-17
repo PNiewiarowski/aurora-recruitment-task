@@ -28,7 +28,7 @@ class ArticleController
     public function create(Request $request, Response $response): void
     {
         if (!Article::validArticle($request)) {
-            header('Location: /board?error=true');
+            header('Location: /board?error=' . urlencode('fill all inputs!'));
             die();
         }
 
@@ -47,7 +47,7 @@ class ArticleController
     public function update(Request $request, Response $response): void
     {
         if (!Article::validArticle($request)) {
-            header('Location: /board/' . $request->get('id') . '?error=true');
+            header('Location: /board/' . $request->get('id') . '?error=' . urlencode('fill all inputs!'));
             die();
         }
 

@@ -23,7 +23,7 @@ block content
                         option.select__option(value='to delete', selected=$article->status == 'to delete') to delete
                         option.select__option(value='hidden', selected=$article->status == 'hide') hide
                 if isset($error)
-                    p.danger all inputs should be filled!
+                    p.danger=$error
                 .article__add
                     button.edit__button.button save
                     a.edit__button.button(href='/board') cancel

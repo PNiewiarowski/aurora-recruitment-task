@@ -23,11 +23,10 @@ class PageController
         Request $request, Response $response, string $template, array $payload = []
     ): Response
     {
-        $html = $this->engine->pugEngine->renderFile(
+        $response->setContent($this->engine->pugEngine->renderFile(
             $template,
             $payload,
-        );
-        $response->setContent($html);
+        ));
 
         return $response;
     }
@@ -39,58 +38,37 @@ class PageController
 
     public function login(Request $request, Response $response): Response
     {
-        if (isset($_GET['error'])) {
-            $error = $_GET['error'];
-        }
-
-        if (isset($_GET['success'])) {
-            $success = $_GET['success'];
-        }
-
         return $this->render($request, $response, 'login.pug', [
-            'error' => $error ?? null,
-            'success' => $success ?? null,
+            'error' => $_GET['error'] ?? null,
+            'success' => $_GET['success'] ?? null,
         ]);
     }
 
     public function register(Request $request, Response $response): Response
     {
-        if (isset($_GET['error'])) {
-            $error = $_GET['error'];
-        }
-
         return $this->render($request, $response, 'register.pug', [
-            'error' => $error ?? null,
+            'error' => $_GET['error'] ?? null,
         ]);
     }
 
     public function board(Request $request, Response $response): Response
     {
-        if (isset($_GET['error'])) {
-            $error = $_GET['error'];
-        }
-
         if (isset($_GET['tag'])) {
-            $tag = $_GET['tag'];
-            $articles = Article::readByTag($this->db->pdoObj, $tag);
+            $articles = Article::readByTag($this->db->pdoObj, $_GET['tag']);
         } else {
             $articles = Article::readAll($this->db->pdoObj);
         }
 
         return $this->render($request, $response, 'board.pug', [
             'articles' => $articles,
-            'error' => $error ?? null,
-            'tag' => $tag ?? null,
+            'error' => $_GET['error'] ?? null,
+            'tag' => $_GET['tag'] ?? null,
         ]);
     }
 
     public function edit(Request $request, Response $response, $id): Response
     {
         $article = Article::readById($this->db->pdoObj, $id);
-
-        if (isset($_GET['error'])) {
-            $error = $_GET['error'];
-        }
 
         if ($article->id === null) {
             return $this->render($request, $response, 'error.pug', [
@@ -101,7 +79,7 @@ class PageController
 
         return $this->render($request, $response, 'edit.pug', [
             'article' => $article,
-            'error' => $error ?? null,
+            'error' => $_GET['error'] ?? null,
         ]);
     }
 }
