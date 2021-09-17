@@ -21,7 +21,7 @@ class App
     {
         $this->router->get('/', [PageController::class, 'index'], ['before' => AuthMiddleware::class]);
         $this->router->get('/board', [PageController::class, 'board'], ['before' => AuthMiddleware::class]);
-        $this->router->get('/board/:number', [PageController::class, 'edit'], ['before' => AuthMiddleware::class]);
+        $this->router->get('/board/:id', [PageController::class, 'edit'], ['before' => AuthMiddleware::class]);
         $this->router->get('/about', [PageController::class, 'index'], ['before' => AuthMiddleware::class]);
         $this->router->get('/login', [PageController::class, 'login']);
         $this->router->get('/register', [PageController::class, 'register']);
