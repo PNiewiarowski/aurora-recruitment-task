@@ -30,6 +30,7 @@ class Article
             !empty($request->get('title')) &&
             !empty($request->get('description')) &&
             !empty($request->get('tags')) &&
+            strlen($request->get('tags')) < 50 &&
             !empty($request->get('status'));
     }
 
