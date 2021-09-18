@@ -1,10 +1,10 @@
 <?php
 
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 spl_autoload_register(function ($className) {
-    require $className . '.php';
+    require_once $className . '.php';
 });
-require 'App.php';
+require_once 'App.php';
 
 use App\App;
 use Buki\Router\Router;

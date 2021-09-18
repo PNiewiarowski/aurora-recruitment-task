@@ -34,7 +34,7 @@ class Article
             !empty($request->get('status'));
     }
 
-    private static function createArticle(mixed $row): Article
+    private static function createArticle(array $row): Article
     {
         return new Article(
             $row['ID'] ?? null,
@@ -71,7 +71,7 @@ class Article
         return Article::createArticle($row);
     }
 
-    public static function readByTag(PDO $pdo_obj, mixed $tag): array
+    public static function readByTag(PDO $pdo_obj, string $tag): array
     {
         $stmt = $pdo_obj->prepare(
             'SELECT * FROM articles WHERE TAGS LIKE ?'
