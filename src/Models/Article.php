@@ -34,7 +34,7 @@ class Article
             !empty($request->get('status'));
     }
 
-    private static function createArticle(array $row): Article
+    private static function createArticle(array|bool $row): Article
     {
         return new Article(
             $row['ID'] ?? null,

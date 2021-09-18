@@ -26,7 +26,7 @@ class User
             strlen($request->get('password')) <= 255;
     }
 
-    private static function createUser(array $row): User
+    private static function createUser(array|bool $row): User
     {
         return new User(
             $row['ID'] ?? null,

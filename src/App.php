@@ -2,42 +2,20 @@
 
 namespace App;
 
-use Controllers\ArticleController;
-use Controllers\PageController;
-use Controllers\AuthController;
-use Middlewares\AuthMiddleware;
-use Buki\Router\Router;
+use Routes\Routes;
 
 class App
 {
-    private Router $router;
+    private Routes $routes;
 
-    public function __construct($router)
+    public function __construct($routes)
     {
-        $this->router = $router;
+        $this->routes = $routes;
     }
 
     public function run()
     {
-        $this->router->get('/', [PageController::class, 'index'], ['before' => AuthMiddleware::class]);
-        $this->router->get('/board', [PageController::class, 'board'], ['before' => AuthMiddleware::class]);
-        $this->router->get('/board/:id', [PageController::class, 'edit'], ['before' => AuthMiddleware::class]);
-        $this->router->get('/about', [PageController::class, 'index'], ['before' => AuthMiddleware::class]);
-        $this->router->get('/login', [PageController::class, 'login']);
-        $this->router->get('/register', [PageController::class, 'register']);
-
-        $this->router->group('/actions/article', function () {
-            $this->router->post('delete', [ArticleController::class, 'delete'], ['before' => AuthMiddleware::class]);
-            $this->router->post('add', [ArticleController::class, 'create'], ['before' => AuthMiddleware::class]);
-            $this->router->post('update', [ArticleController::class, 'update'], ['before' => AuthMiddleware::class]);
-        });
-
-        $this->router->group('/actions/auth', function () {
-            $this->router->post('login', [AuthController::class, 'login']);
-            $this->router->post('register', [AuthController::class, 'register']);
-            $this->router->post('logout', [AuthController::class, 'logout']);
-        });
-
-        $this->router->run();
+        $this->routes->setup();
+        $this->routes->run();
     }
 }
