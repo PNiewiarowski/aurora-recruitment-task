@@ -1,10 +1,10 @@
 <?php
 
-require_once 'vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 spl_autoload_register(function ($className) {
-    require_once $className . '.php';
+    require_once __DIR__ . '/' . $className . '.php';
 });
-require_once 'App.php';
+require_once __DIR__ . '/App.php';
 
 use App\App;
 use Dotenv\Dotenv;
