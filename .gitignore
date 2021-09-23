@@ -1,3 +1,3 @@
-src/vendor
-src/weirdos
+app/vendor
+app/weirdos
 .idea

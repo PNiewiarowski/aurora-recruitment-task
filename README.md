@@ -5,7 +5,7 @@ Aurora recruitment task for PHP junior developer.
 ## Run locally
 
 - clone repository `git clone [repository]`
-- cd to source directory `cd [repository]/src`
+- cd to source directory `cd [repository]/app`
 - install dependencies `composer install`
 - run local development server `php -S localhost:[port]`
 - create database `aurora` in MySQL
@@ -18,9 +18,3 @@ Aurora recruitment task for PHP junior developer.
 - Template engine: PUG
 - .env file with basic configuration exists in repository
 - database dump: /database/dump.sql
-
-## Screenshots
-
-![Board](./screenshots/board.png)
-![Edit](./screenshots/edit.png)
-![Tags](./screenshots/tags.png)
