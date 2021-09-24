@@ -9,9 +9,7 @@ use App\App;
 use Dotenv\Dotenv;
 use Routes\Routes;
 
-$dotenv = Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
+Dotenv::createImmutable(__DIR__)->load();
 session_start();
 
 (new App(new Routes()))->run();
